@@ -1,0 +1,14 @@
+# make sure each line ends in LF not CRLF!
+xterm:xterm
+gedit:gedit
+Nautilus:nautilus
+Firefox:firefox
+Pidgin:pidgin
+XChat:xchat
+Rhythmbox:rhythmbox
+Totem:totem
+GIMP:gimp
+Edit menu:gvim /etc/X11/windowlab/windowlab.menurc
+About:windowlab -about | xmessage -file -
+Reload:pkill -HUP windowlab
+Quit:skill windowlab

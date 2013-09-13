@@ -1,0 +1,526 @@
+1.40 (2010-04-04)
+
+* integrated a change from Simon Engelsman (thanks!):
+	* XNextEvent() was replaced by interruptible_XNextEvent() function in do_event_loop()
+
+
+1.39 (2009-12-27)
+
+* integrated more changes from Mats Erik Andersson:
+	* menu file handling made more lenient
+
+
+1.38 (2009-11-14)
+
+* integrated more changes from Mats Erik Andersson:
+	* makefile made more flexible
+	* signal handler for SIGHUP now just sets a semaphore, and reloading of menu resources happens in the event loop
+	* fixed problems found by auditing the code with Flawfinder
+
+
+1.37 (2009-10-04)
+
+* integrated a change from Campbell Barton (thanks!):
+	* fixed a bug which was freeing clients' names twice
+
+
+1.36 (2009-10-01)
+
+* rewrote the inherited licences part of the readme file to take into account 9wm's switch to the MIT licence
+* updated the menu options
+* integrated more changes from Mats Erik Andersson:
+	* added a simple mechanism which updates the menu in the running instance of WindowLab
+
+
+1.35 (2009-09-20)
+
+* integrated changes from Mats Erik Andersson (thanks!):
+	* fixed a bug that could cause processes to become zombified
+	* fixed a bug that made some windows unviewable
+
+
+1.34 (2006-11-12)
+
+* if no window has focus, focus is given to new windows
+* if the focused window is closed and no previous window has ever had focus, focus is given to the first client
+* integrated changes from Jeffrey Drake (thanks!):
+	* fonts now closed properly on exit
+* integrated more changes from Antti Nykänen:
+	* fixed a compiler warning
+* integrated more changes from David Lawrence Ramsey:
+	* fixed a compiler warning
+	* changes to the Makefile
+	* many other misc changes!
+
+
+1.33 (2005-10-16)
+
+* integrated changes from Dushkin (thanks!):
+	* scrolling the mouse wheel in the taskbar now task switches
+* integrated changes from Antti Nykänen (thanks!):
+	* fixed a crash that occurred on the BSDs (and presumably on other systems without /proc/self/exe)
+* integrated changes from Gregor Imboden (thanks!):
+	* fixed a crash that ocurrred when there are no focused windows and alt + F12 is pressed was fixed
+* events are always replayed rather than sometimes being eaten
+* new windows are no longer given focus
+* added TODO file
+
+
+1.32 (2005-07-20)
+
+* the executable has been made relocatable
+* double clicking on a windows titlebar toggles its depth (based on code from Roland Haas)
+* integrated changes from Mike M. Volokhov (thanks!):
+	* a segfault when using realloc() with menu items was fixed
+* integrated more changes from Roland Haas:
+	* fixed bug with applications that start in iconic mode
+	* -display option added
+	* the initial position and size hints in WM_HINTS are now ignored since they are flagged as obsolete in the manpage of SetWMHints
+
+
+1.31 (2005-06-21)
+
+* more resizing bugs were fixed
+* integrated changes from Roland Haas (thanks!):
+	* window borders are now taken into account properly when resizing
+	* bugs with XFT fonts when resizing were fixed
+
+
+1.30 (2005-05-23)
+
+* a bug that prevented windows from being made smaller from a side that was at the edge of the screen was fixed
+* a bug that caused the first clients taskbar button to disappear when all clients were hidden was fixed
+
+
+1.29 (2005-05-18)
+
+* integrated more changes from David Lawrence Ramsey:
+	* a segfault that occurred when removing clients was fixed
+	* some cosmetic code changes were made
+
+
+1.28 (2005-05-15)
+
+* when the focused window is closed or hidden, focus is returned to the previous window
+* fixed serious problem with using a modifier key for resizing that occurred on some systems
+* changed resizing to use alt instead of the Windows key
+* fixed bug when using alt-tab/alt-q to switch focus to a hidden window
+* changed default fontname to work with Xorg
+
+
+1.27 (2005-04-16)
+
+* hidden windows are now shown and re-hidden when their taskbar button is dragged over
+
+
+1.26 (2005-02-23)
+
+* integrated more changes from David Lawrence Ramsey:
+	* various improvements to the makefile were made
+	* a bug with vertically resizing windows that use size increments was fixed
+	* a few cosmetic cleanups to various sections of code were made
+
+
+1.25 (2004-12-23)
+
+* integrated changes from Matt Borkowski (thanks!):
+	* some Z ordering bugs were fixed
+* integrated more changes from David Lawrence Ramsey:
+	* click-to-focus was made to work on fullscreen windows that have lost focus
+	* size changes are applied to the original non-fullscreen coordinates of fullscreen windows
+	* all of the function prototypes were made consistent
+	* windows that reconfigure themselves without changing positions no longer move
+	* the shortcut keys behavior changed
+	* some gcc 3.3.x warnings were fixed (ported from aewm)
+	* the switch statement in handle_property_change() is no longer missing a break (ported from aewm)
+	* send_xmessage() now uses an XClientMessageEvent instead of a generic XEvent (ported from aewm)
+
+
+1.24 (2004-05-29)
+
+* holding down the Windows key on it's own now brings the current window to the front, after which dragging against the window's edge with any mouse button depressed resizes it
+* integrated more changes from David Lawrence Ramsey:
+	* a few prototypes/declarations were fixed
+
+
+1.23 (2004-03-12)
+
+* resizing now optionally uses a modifier key
+* a very serious bug in the resizing system was fixed
+* the button graphics were altered
+* the task switching keys were changed to alt-tab/alt-q
+* it's no longer possible to resize a fullscreen window
+* integrated more changes from David Lawrence Ramsey:
+	* a bug where resized windows lost focus was fixed
+	* a debugging statement was added
+	* a compiler warning was fixed
+	* an unnecessary get_mouse_position() call was removed
+
+
+1.22 (2004-02-22)
+
+* the middle mouse button is now used to resize the active window
+* the resize button has become a hide button
+* a bug when making windows smaller was fixed
+* alt-F9/F10 now raises the window as well as changing focus
+
+
+1.21 (2004-01-17)
+
+* the 8½ style of window reshaping was dropped in favour of a completely new mechanism that allows users to change one or many different edges of the window independantly in one action
+* small bug fix in window titlebar drawing
+* integrated changes from Guido Schimmels (thanks!):
+	* a bitmap font is no longer referenced if an XFT font is used
+* integrated more changes from David Lawrence Ramsey:
+	* the code was changed to use NULL explicitely
+	* draw_redraw_button() was renamed as draw_resize_button()
+	* warnings fixed when compiling using gccs -pedantic option
+
+
+1.20 (2003-12-31)
+
+* altered the button graphics and changed the default active window colour
+* removed the borderwidth command line option
+* integrated more changes from David Lawrence Ramsey:
+	* made fullscreen mode respect window size increment hints as well as maximum size hints
+	* clicking the right mouse button between between clicking the resize button and starting the window drag cancels resize mode
+
+
+1.19 (2003-11-14)
+
+* users can now click and drag the mouse pointer over the taskbar to quickly find different windows
+* fixed bug where a menu item would not be lauched unless the cursor was moved
+* corrected amount that taskbar items text are indented to match that of windows titlebars
+
+
+1.18 (2003-11-03)
+
+* small bug fix in window titlebar drawing
+
+
+1.17 (2003-11-01)
+
+* images added to windows titlebar buttons
+* quit option added to the sample menu file
+
+
+1.16 (2003-10-04)
+
+* integrated more changes from David Lawrence Ramsey:
+	* ConfigureRequest handler modified so that refix_position() is called before gravity ids reapplied (this allows refix_position() to be much simpler)
+	* resize increments of zero are now handled properly
+	* some changes to the minimum size #defines
+
+
+1.15 (2003-08-17)
+
+* integrated more changes from David Lawrence Ramsey:
+	* it now compiles with Xft support (it previously referenced detail_col instead of text_col in main.c)
+	* extra logic added to refix_position() to keep windows from overlapping the taskbar
+
+
+1.14 (2003-08-17)
+
+* fullscreen mode now reserves space at the top of the screen for the taskbar/menubar which is only displayed when the mouse is over it (for users who want to watch fullscreen video without the wm showing)
+* created a new colour to cover the screen when a window in fullscreen mode is too small to fill the screen and reintroduced a separate colour for the text
+* rewrote refix_postion() to use fix_position()
+* reduced the height of the taskbar - it was previously BORDERWIDTH taller than the windows titlebars
+* WindowLab now reallocs memory unused by the menu options
+
+
+1.13 (2003-08-09)
+
+* depressed button colour is now derived from the active titlebar colour
+* removed redundant command line arguments and made the rest less cryptic
+* clients that cannot be made as big as the screen are now centred when put into fullscreen mode
+* Makefile now prompts the user before overwriting an existing menurc file
+* integrated more changes from David Lawrence Ramsey:
+	* fullscreen_client now set to NULL in send_wm_delete()
+	* made a few minor cleanups
+
+
+1.12 (2003-07-20)
+
+* cycle_previous() and cycle_next() greatly simplified
+* unhide() function added
+* hidden windows are now listed in the taskbar, and clicking their buttons will unhide them
+* RATIONALE file added to explain the reasoning behind some of WindowLabs features
+* integrated more changes from David Lawrence Ramsey:
+	* code added to keep windows (eg Mozilla and Mozilla Firebird) from raising themselves
+	* modified refix_position() to handle maximized (decorless) windows properly
+	* fixed a bug in the manpage where the description of the keybindings is all fused into one paragraph
+	* made a few minor cleanups
+
+
+1.11 (2003-07-05)
+
+* fixed fullscreenmode so that no border is shown on screen
+* setsid() is now called in fork_exec() to prevent child processes from dying when WindowLab is killed or crashes
+* support added for toggling window depth and cycling between next and previous windows using the keyboard
+
+
+1.10 (2003-05-25)
+
+* added code to toggle fullscreen mode on non transient windows when the user hits F11
+* tidied up some more code
+
+
+1.9 (2003-04-19)
+
+* made new windows appear fully on screen instead of just their titlebar
+* added code to destroy the constraint window if it can't be grabbed (found by Pierre-Paul Lavoie)
+* removed unnecessary unmapping of windows before they were destroyed (found by Pierre-Paul Lavoie)
+* integrated changes from Pierre-Paul Lavoie (thaks ppl!):
+	* the menurc path is now specified by a -D option on the compile line in the makefile instead of being a #define in the code
+* integrated more changes from David Lawrence Ramsey:
+	* significant changes made to the ConfigureRequest event handler with the addition of refix_position()
+	* crash in dump_clients() in DEBUG mode fixed
+
+
+1.8 (2003-03-30)
+
+* integrated more changes from David Lawrence Ramsey:
+	* the makefile now uses pkg-config (which XFree86 4.3.0 should include an entry for) to get the library and include directory information needed to compile properly (ported from aewm)
+	* menufile.c changed to use XftTextExtents8() to get the proper width of text when Xft is used
+
+
+1.7 (2003-03-30)
+
+* added title bar to the reshape window
+* small improvements made to manage.c
+
+
+1.6 (2003-03-15)
+
+* added visual hint when a button is depressed
+* integrated changes from David Lawrence Ramsey (thanks!):
+	* some focussing problems fixed
+	* GTK resizing bug handled
+	* iconified windows now handled properly
+	* misc small fixes
+
+
+1.5 (2003-02-27)
+
+* gave menu its own colours
+* many changes and fixes, especially to sweep() and helper functions in manage.c
+
+
+1.4 (2003-02-18)
+
+* added menu system - this should be the last fundamental change to functionality
+
+
+1.3 (2003-02-10)
+
+* fixed crash caused if the taskbar is clicked and no clients are present (found by lanzz)
+* changed resizing to use a window rather than inverting the background
+* many misc bug fixes
+* fixed a problem with xft/freetype (found by Michael Haller)
+
+
+1.2 (2003-01-23)
+
+* new client window positioning algorithm altered so that it's more obvious to the user
+* small bug in find_client fixed
+
+
+1.1 (2003-01-12)
+
+* some refactoring in events.c
+* added some missing event handling for the taskbar window (found by Pierre-Paul Lavoie)
+* made taskbar window update when a client window changes its title
+
+
+1.0 (2002-12-26)
+
+* first public release
+
+
+
+*** ORIGINAL AEWM CHANGELOG ***
+
+1.1.2:
+
+ * Rewrote init_position again. This fixes the problem with specifying a USPosition containing 0.
+ * Added gtk-menu client contributed by Adam Sampson <azz@gnu.org>. I want to fold this stuff into the rest of the goodies eventually. For now, just keep in mind that the extensions to .paletterc may change.
+ * Added a "-version" option for printing version information from the command line.
+ * Added some proper headers to all the files in goodies/lib/.
+ * Replaced strcpy/strcat in panel-misc.c with snprintf to prevent a possible buffer overflow.
+ * Made some improvements to the .paletterc parser: squish a possible segfault, handle comments/blank lines, ignore menu directives.
+ * Reformatted man pages.
+
+1.1.1:
+
+ * Fix typo in man page install location.
+ * Use -lXt when compiling Xaw goodies (required to build on SunOS).
+ * Added some more documentation (mostly about things that are likely to break.)
+
+1.1.0:
+
+ * Xft (freetype extension) support, thanks once again to help from Adam Sampson <azz@gnu.org>.
+ * A few Makefile improvements: only link against required libraries, easier enabling/disabling of options, don't attempt to compile against headers in the binary destination tree.
+ * Yet more init_position tweaks -- use x position hint even if y is out of range and vice versa, and take window gravity into account when positioning.
+ * Some additions and improvements to the debug code (mainly printing names of constants instead of cryptic numbers).
+
+1.0.3:
+
+ * Backport new init_position, -version option, new man pages, and panel-misc.c crasher/overflow fixes.
+
+1.0.2:
+
+ * Backport -lXt fix and new documentation.
+
+1.0.1:
+
+ * Fix remove_client so that it compiles with -DDEBUG turned on.
+
+1.0.0:
+
+ * All right, I think we're stable now. New stuff will go into 1.1.x.
+ * Changed init_position so that it doesn't cut off very large windows. This was merely annoying for regular windows, but it was downright buggy for incsized ones.
+ * Fixed compilation bug when shape support was disabled.
+
+0.9.19:
+
+ * OK, I broke command line parsing again. Yes, I'm an idiot.
+ * Fixed problem with exec()-ing a non-existent program.
+
+0.9.18:
+
+ * Fixed bug in init_position; we can safely use PPosition now. If windows start popping up in bad places, check their size hints before yelling at me.
+ * Use fork/exec instead of system(3) to run programs. Fixed signal handlers to reflect this (we need POSIX sigaction(2)).
+ * Cleaned up MWM hints/WM_SIZE hints code (they sort of match now), and only request the MWM atom at startup instead of for each call.
+ * Started yet another goodies reorganization, and ended up reverting a lot of it. However what's changed should go a little ways towards cleaning things up.
+ * Fix a build error where some goodies files that needed to be compiled against X were compiled without -I/use/X11R6/lib, failing on systems without a symlink from /usr/include/X11.
+ * Tossed out historical 'iheight' junk in border calculation.
+
+0.9.17:
+
+ * Use ln -f to ignore overwriting previously installed manpage links.
+ * If MWM hints are enabled, no-border windows will no longer get a border upon exiting.
+ * The order of buttons in *-palette is no longer changed by title updates or unhiding windows.
+ * xaw-palette was fixed to work with proper versions of Xaw (shame on me for testing with Xaw3d!), including the one in XF4. The new internals have ported over to gtk-palette.
+
+0.9.16:
+
+ * Fixed a shaping bug (which actually existed before changes made in 0.9.15) where a window that used to be shaped, but then became unshaped, wasn't updated properly.
+ * MWM hints support can now be compiled in with -DMWM_HINTS, thanks to help from Adam Sampson <azz@gnu.org>.
+ * Set the input focus upon entering a window frame, instead of on entering the child window.
+
+0.9.15:
+
+ * Display a titlebar for shaped windows. This also makes the bug where shaped windows were getting gravitated as if they had a titlebar irrelevant.
+ * Tiny cleanups for the Debian package, including:
+ * Man page for the goodies.
+ * Typo in makefile fixed (tried to strip manpage, ah-reer-reer-reer).
+ * Polished the main man page a bit.
+
+0.9.14:
+
+ * Free cursors and GCs in quit_nicely.
+ * Switch order of objects and libraries in Makefile to placate Solaris cc.
+ * Rename raise to raise_win -- raise is in signal.h of course (duh!)
+ * Added copyright notice to all goodies and Makefiles due to someone ignoring my license (this has been worked out).
+ * Bail out on lack of default font. You *should* be reading aewm.h first of course ;-)
+
+0.9.13:
+
+ * Fix really stupid thing I did while refactoring make_new_client, where a window that started as Withdrawn would stay that way instead of getting mapped.
+ * Deal with withdrawing clients properly in *-palette, by watching for the WM_STATE property to be changed instead of looking at UnmapNotify events.
+
+0.9.12:
+
+ * Clean up clients on receipt of a DestroyNotify. This is needed when a client is already unmapped (i.e, the user iconified it) and it exits.
+ * Preserve window stacking order on exit and restart.
+ * Mucked about with the make_new_client logic; tell me if this breaks something.
+ * Added gtk-*-menu clients contributed by Adam Sampson <azz@gnu.org>.
+
+0.9.11:
+
+ * Got rid of unneeded PropertyChangeMask on root window. Silly me.
+ * Removed the ugly array/linked-list hack from xaw-palette, so that the internal workings of both palette clients are now basically identical.
+ * static'd everything that should have been static.
+ * Updated email, documentation, etc.
+ * Got rid of handle_reparent_event, as a client call to XReparentWindow is taken care of by handle_unmap_event.
+ * Backed out the 0.9.9 change to option-parsing macros, which were causing all options to fail miserably (argh).
+
+0.9.10:
+
+ * Handle withdrawing windows properly in xaw-palette. Both palette clients are a little saner now.
+ * Updated goodies docs.
+ * ungravitate when printing geometry for move/resize.
+ * Moved more code from individual goodies to common-run.c.
+ * Got rid of unhide() as we never use it.
+ * Replaced GenericWidget typedef silliness with global variables. sometimes you just have to pick the lesser of two evils...
+
+0.9.9:
+
+ * Finally de-insanified handle_xerror. Instead of going through contortions in remove_client to avoid raising errors, we turn the error handler off during the server grab.
+ * Both palette goodies now track iconification of clients and WM_NAME changes.
+ * gtk-palette is now oriented horizontally, and includes a menu, providing lots more space for client buttons.
+ * Made the parse_option macros reusable (thanks to the comp.lang.c folks for the reminder).
+ * make sure get_wm_name in the goodies doesn't crash for windows that have no name.
+ * Minor typo corrections and stuff.
+
+0.9.8:
+
+ * Brown paper bag: take debugging stupidity out of gtk-palette.
+ * Overhaul the goodies' build system yet again.
+ * Gtk-palette now gets the screen size correctly.
+ * All switch/palette goodies now cut off long titles, use WM_NAME instead of WM_ICON_NAME, and place iconified titles in parenthesis.
+ * No changes to aewm itself in this release.
+
+0.9.7:
+
+ * Added lots of comments.
+ * General code cleanups, tweaks, reformats all over.
+ * Fixed iconic state problem.
+ * Plugged a memory leak in send_wm_delete.
+ * Added -new3.
+ * Fixed -new[123] allocation bug.
+ * Made debug code considerably saner.
+ * Print "80x25" and such when resizing xterms.
+ * Replaced sprintf with snprintf.
+ * Got rid of -display. set DISPLAY in your environment instead, so that it propagates to child processes.
+ * Messed around with the goodies' build system.
+ * Fixed gtk-palette; events are now filtered properly at the GDK level.
+ * Replaced variable length arrays with malloc/free.
+ * Added xsession, since I've been using it forever.
+
+0.9.6:
+
+ * Fix for handling inital window geometry.
+ * A few memory leaks plugged.
+ * Wrote a man page
+ * More consistent borders for transient windows.
+
+0.9.5:
+
+ * Print window geometry while moving/resizing.
+ * Added some WM_NORMAL_HINTS sanity checks
+ * Set the keyboard focus on window enter (for rxvt, etc).
+
+0.9.4:
+
+ * Root menu replaced by another client.
+ * Added -bw option.
+ * Border-drawing fixes (only visible if you have very wide borders).
+ * Got rid of mouse button exit.
+
+0.9.3:
+
+ * Put the root menu code back in.
+ * Added more goodies and reorganized them.
+
+0.9.2:
+
+ * Minor ICCCM compliance fix regarding WM_STATE.
+
+0.9.1:
+
+ * A small fix to make the palette complain if no rc file exists.
+
+0.9:
+
+ * Initial public release. Before this, aewm was called 'swim' and was used by me as a school project. It was also rather unstable.
