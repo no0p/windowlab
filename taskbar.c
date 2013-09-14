@@ -439,3 +439,10 @@ void cycle_next(void)
 		lclick_taskbutton(NULL, c);
 	}
 }
+
+/* Tile all windows*/
+void tile(void) 
+{
+  Client *c = focused_client;
+  XMoveResizeWindow(dsply, c->window, 0, 0, 100, 100);
+}

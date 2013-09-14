@@ -262,4 +262,6 @@ static void setup_display(void)
 	grab_keysym(root, MODIFIER, KEY_CYCLENEXT);
 	grab_keysym(root, MODIFIER, KEY_FULLSCREEN);
 	grab_keysym(root, MODIFIER, KEY_TOGGLEZ);
+  grab_keysym(root, MODIFIER, KEY_TILE);
+
 }

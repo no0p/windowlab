@@ -592,3 +592,7 @@ void write_titletext(Client *c, Window bar_win)
 #endif
 	}
 }
+
+
+
+

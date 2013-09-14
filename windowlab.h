@@ -107,6 +107,7 @@ typedef struct PropMwmHints
 #define KEY_CYCLENEXT XK_q
 #define KEY_FULLSCREEN XK_F11
 #define KEY_TOGGLEZ XK_F12
+#define KEY_TILE XK_Pause 
 
 // max time between clicks in double click
 #define DEF_DBLCLKTIME 400
@@ -321,6 +322,7 @@ extern void rclick_taskbar(int);
 extern void rclick_root(void);
 extern void redraw_taskbar(void);
 extern float get_button_width(void);
+extern void tile(void);
 
 // menufile.c
 extern int do_menuitems;

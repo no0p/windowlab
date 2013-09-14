@@ -124,6 +124,9 @@ static void handle_key_press(XKeyEvent *e)
 		case KEY_TOGGLEZ:
 			raise_lower(focused_client);
 			break;
+		case KEY_TILE:
+			tile();
+			break;
 	}
 }
 
