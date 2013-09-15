@@ -103,11 +103,11 @@ typedef struct PropMwmHints
 #define MODIFIER Mod1Mask
 
 // keys may be used by other apps, so change them here
-#define KEY_CYCLEPREV XK_Tab
+#define KEY_CYCLEPREV XK_x
 #define KEY_CYCLENEXT XK_q
 #define KEY_FULLSCREEN XK_F11
 #define KEY_TOGGLEZ XK_F12
-#define KEY_TILE XK_Pause 
+#define KEY_TILE XK_Tab 
 
 // max time between clicks in double click
 #define DEF_DBLCLKTIME 400

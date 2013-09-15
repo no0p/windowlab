@@ -443,6 +443,22 @@ void cycle_next(void)
 /* Tile all windows*/
 void tile(void) 
 {
-  Client *c = focused_client;
-  XMoveResizeWindow(dsply, c->window, 0, 0, 100, 100);
+  Client *c = head_client;
+  
+  int x = 100;
+  int y = 100;
+  while(c != NULL) {
+	  c->x = x;
+  	c->y = y;
+	  c->width = 100;
+		c->height= 100;
+		XMoveResizeWindow(dsply, c->frame, c->x, c->y - BARHEIGHT(), c->width, c->height + BARHEIGHT());
+	  XMoveResizeWindow(dsply, c->window, 0, BARHEIGHT(), c->width, c->height);
+
+		x += 100;
+		y += 20;
+
+    c = c->next;
+	}
 }
+

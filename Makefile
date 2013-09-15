@@ -73,6 +73,10 @@ install: all
 	mkdir -p $(MANDIR) && install -m 644 $(MANPAGE) $(MANDIR) && gzip -9vfn $(MANDIR)/$(MANPAGE)
 	mkdir -p $(CFGDIR) && cp -i windowlab.menurc $(CFGDIR)/windowlab.menurc && chmod 644 $(CFGDIR)/windowlab.menurc
 
+apply: 
+	sudo rm /usr/bin/windowlab
+	sudo cp ./windowlab /usr/bin/windowlab
+
 clean:
 	rm -f $(PROG) $(OBJS)
 
