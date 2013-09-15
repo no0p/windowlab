@@ -445,9 +445,19 @@ void tile(void)
 {
   Client *c = head_client;
   
+  Shelf **shelves[3];
+  shelves[0];
+  //topshelf = (Shelf *)malloc(sizeof *topshelf);
+  
+  int disp_width = DisplayWidth(dsply, screen);
+  int disp_height = DisplayHeight(dsply, screen);
+  
   int x = 100;
   int y = 100;
   while(c != NULL) {
+	  
+	  
+	  
 	  c->x = x;
   	c->y = y;
 	  c->width = 100;

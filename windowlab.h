@@ -232,6 +232,13 @@ typedef struct MenuItem
 	int width;
 } MenuItem;
 
+typedef struct Shelf
+{
+	Client **clients;
+	int minheight;
+	int maxheight;
+} Shelf;
+
 // Below here are (mainly generated with cproto) declarations and prototypes for each file.
 
 // main.c
