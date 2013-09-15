@@ -456,8 +456,7 @@ void tile(void)
   int max_shelf_height = 0;
   int max_allowed_shelf_height;
   max_allowed_shelf_height = disp_height / 2;
-  int x = 0, y = 50;
-  //int max_area = 0, min_area = 0;
+  int y = 50;
 	double mean_area = 0, ccount = 0;
 	
 	
@@ -471,11 +470,7 @@ void tile(void)
   	if(c->height > disp_height)
   		c->height = disp_height / 2;	  
 
-		//int candidate_area = c->height * c->width;
-	  //mean_area = ((mean_area * ccount) + candidate_area)/(ccount + 1);
-
 		//Adjust Size for dimishinisg horiz	  
-		
     if((left_border + c->width) > disp_width && ((disp_width - left_border) / 2) > min_win_width) {
   	  c->width = (disp_width - left_border) / 2;
   	} else if(left_border + c->width > disp_width) {
@@ -494,8 +489,6 @@ void tile(void)
 	  	max_shelf_height = c->height;
 	  	  
 	  // Pick and Adjust Location
-	  	  
-	  
 	  c->x = left_border;
   	c->y = y;
   	 
