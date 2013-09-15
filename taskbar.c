@@ -445,28 +445,65 @@ void tile(void)
 {
   Client *c = head_client;
   
-  Shelf **shelves[3];
-  shelves[0];
-  //topshelf = (Shelf *)malloc(sizeof *topshelf);
+  int normalized_consumed_area = 0;
   
   int disp_width = DisplayWidth(dsply, screen);
   int disp_height = DisplayHeight(dsply, screen);
+
+  int target_area = disp_width * disp_height;
   
-  int x = 100;
-  int y = 100;
+  int min_win_width = 100;
+  int max_shelf_height = 0;
+  int max_allowed_shelf_height;
+  max_allowed_shelf_height = disp_height / 2;
+  int x = 0, y = 50;
+  //int max_area = 0, min_area = 0;
+	double mean_area = 0, ccount = 0;
+	
+	
+	int left_border = 0;
+	
   while(c != NULL) {
 	  
+	  // Adjust Size For Realistic Maximum
+		if(c->width > disp_width) 
+  		c->width = disp_width / 2;
+  	if(c->height > disp_height)
+  		c->height = disp_height / 2;	  
+
+		//int candidate_area = c->height * c->width;
+	  //mean_area = ((mean_area * ccount) + candidate_area)/(ccount + 1);
+
+		//Adjust Size for dimishinisg horiz	  
+		
+    if((left_border + c->width) > disp_width && ((disp_width - left_border) / 2) > min_win_width) {
+  	  c->width = (disp_width - left_border) / 2;
+  	} else if(left_border + c->width > disp_width) {
+  		y = y + max_shelf_height + 25;
+  		max_shelf_height = 0;
+  		left_border = 0;
+  		max_allowed_shelf_height = (disp_height - y) / 2;
+  	}
+  		
+  	  
+  	//Adjust Size for dimisnishing vert
+	  if(c->height > max_allowed_shelf_height)
+	  	c->height = max_allowed_shelf_height;
+	 
+	  if(c->height > max_shelf_height) 
+	  	max_shelf_height = c->height;
+	  	  
+	  // Pick and Adjust Location
+	  	  
 	  
-	  
-	  c->x = x;
+	  c->x = left_border;
   	c->y = y;
-	  c->width = 100;
-		c->height= 100;
+  	 
+  	// Apply Window Changes  	  		
 		XMoveResizeWindow(dsply, c->frame, c->x, c->y - BARHEIGHT(), c->width, c->height + BARHEIGHT());
 	  XMoveResizeWindow(dsply, c->window, 0, BARHEIGHT(), c->width, c->height);
-
-		x += 100;
-		y += 20;
+	
+		left_border += c->width;
 
     c = c->next;
 	}
